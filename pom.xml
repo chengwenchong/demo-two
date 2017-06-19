@@ -8,13 +8,15 @@
   <properties>  
   	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <!-- spring版本号 -->  
-      <spring.version>4.0.2.RELEASE</spring.version>  
+      <spring.version>4.3.9.RELEASE</spring.version>  
       <!-- mybatis版本号 -->  
       <mybatis.version>3.2.6</mybatis.version>  
       <!-- log4j日志文件管理包版本 -->  
       <slf4j.version>1.7.7</slf4j.version>  
       <log4j.version>1.2.17</log4j.version> 
       <project.tomcat.version>8.0.44</project.tomcat.version> 
+      <!-- spring security版本号 -->
+      <security.version>4.2.3.RELEASE</security.version>
   </properties> 
   
   <dependencies>
@@ -76,6 +78,13 @@
             <artifactId>spring-test</artifactId>  
             <version>${spring.version}</version>  
         </dependency> 
+        
+        <!-- spring security包 -->
+        <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-web</artifactId>
+	        <version>${security.version}</version>
+	    </dependency>
         
         <!-- mybatis核心包 -->  
         <dependency>  
