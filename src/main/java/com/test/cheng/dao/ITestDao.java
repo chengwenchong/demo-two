@@ -4,6 +4,6 @@ import java.util.List;
 
 import javax.xml.registry.infomodel.User;
 
-public interface TestDao {
+public interface ITestDao {
 	public List<User> getUsers();
 }

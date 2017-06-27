@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.test.cheng.dao.TestDao;
+import com.test.cheng.dao.ITestDao;
 import com.test.cheng.service.TestService;
 
 @Controller

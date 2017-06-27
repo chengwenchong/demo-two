@@ -7,13 +7,13 @@ import javax.xml.registry.infomodel.User;
 
 import org.springframework.stereotype.Service;
 
-import com.test.cheng.dao.TestDao;
+import com.test.cheng.dao.ITestDao;
 import com.test.cheng.service.TestService;
 @Service("testService")
 public class TestServiceImpl implements TestService {
 
 	@Resource
-	private TestDao testDao;
+	private ITestDao testDao;
 	
 	@Override
 	public List<User> getUsers() {
