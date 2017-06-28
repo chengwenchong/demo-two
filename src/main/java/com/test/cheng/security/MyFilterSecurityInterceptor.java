@@ -22,15 +22,15 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor{
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {   
         FilterInvocation fi = new FilterInvocation(request, response, chain);   
         invoke(fi);    
-        }  
+    }  
  
     public FilterInvocationSecurityMetadataSource getSecurityMetadataSource() {    
         return this.securityMetadataSource;    
-        }     
+    }     
  
     public Class<? extends Object> getSecureObjectClass() {   
         return FilterInvocation.class;      
-        }    
+    }    
  
     public void invoke(FilterInvocation fi) throws IOException, ServletException {  
         //fi里面有一个被拦截的url  
@@ -40,18 +40,19 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor{
         try {  
             //执行下一个拦截器  
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());     
-            } finally {   
+        } finally {   
                 super.afterInvocation(token, null);    
-            }     
-        }    
+        }     
+    }    
+    
     public SecurityMetadataSource obtainSecurityMetadataSource() {   
         return this.securityMetadataSource;     
-        }   
-    public void setSecurityMetadataSource(  
-            FilterInvocationSecurityMetadataSource newSource)  
-    {   
+    } 
+    
+    public void setSecurityMetadataSource(FilterInvocationSecurityMetadataSource newSource){   
         this.securityMetadataSource = newSource;   
     }   
+    
     public void destroy() {    
  
     }     

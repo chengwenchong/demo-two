@@ -5,19 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.test.cheng.dao.ITestDao;
-import com.test.cheng.service.TestService;
+import com.test.cheng.dao.IUserDao;
+import com.test.cheng.service.UserService;
 
 @Controller
 @RequestMapping("/test")
 public class TestController {
 	
 	@Autowired
-	private TestService testService;
+	private UserService userService;
 	
 	@RequestMapping("/showSuccess")
 	public String toShowSuccess(Model model){
-		model.addAttribute("users", testService.getUsers());
+		model.addAttribute("users", userService.getUsers());
 		return "showUser";
 	}
 	

@@ -168,10 +168,15 @@
         <!-- log end -->  
         <!-- 映入JSON -->  
         <dependency>  
-            <groupId>org.codehaus.jackson</groupId>  
-            <artifactId>jackson-mapper-asl</artifactId>  
-            <version>1.9.13</version>  
-        </dependency>  
+		    <groupId>com.fasterxml.jackson.core</groupId>  
+		    <artifactId>jackson-core</artifactId>  
+		    <version>2.5.2</version>  
+		</dependency> 
+		<dependency>  
+		    <groupId>com.fasterxml.jackson.core</groupId>  
+		    <artifactId>jackson-databind</artifactId>  
+		    <version>2.5.2</version>  
+		</dependency>
         <!-- 上传组件包 -->  
         <dependency>  
             <groupId>commons-fileupload</groupId>  

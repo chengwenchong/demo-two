@@ -14,8 +14,8 @@
     <sec:authentication property ="name"/> !  
  
         
-    <a href="admin.jsp">进入admin页面</a>   
-    <a href="other.jsp">进入其它页面</a>   
+    <a href="/admin.jsp">进入admin页面</a>   
+    <a href="/other.jsp">进入其它页面</a>   
 </body>  
  
 </html><html>

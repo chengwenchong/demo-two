@@ -2,8 +2,8 @@
 <b:beans xmlns="http://www.springframework.org/schema/security" 
     xmlns:b="http://www.springframework.org/schema/beans" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
-                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">  
  
  <!-- 配置不需要安全管理的界面 --> 
      <http pattern="/jsp/css/**" security="none"></http>  
@@ -13,8 +13,8 @@
      <http pattern="/accessDenied.jsp" security="none" />  
      <http pattern="/index.jsp" security="none" />  
  
-     <http use-expressions='true' entry-point-ref="myAuthenticationEntryPoint" access-denied-page="/accessDenied.jsp">  
- 
+     <http use-expressions='true' entry-point-ref="myAuthenticationEntryPoint">  
+ 		<access-denied-handler error-page="/accessDenied.jsp"/>
        	<!-- 使用自己自定义的登陆认证过滤器 --><!-- 这里一定要注释掉，因为我们需要重写它的过滤器 --> 
        	<!-- <form-login login-page="/login.jsp"  
 		        authentication-failure-url="/accessDenied.jsp"      
@@ -59,7 +59,7 @@
     </b:bean>  
  
     <!--一个自定义的filter，必须包含 authenticationManager,accessDecisionManager,securityMetadataSource三个属性，我们的所有控制将在这三个类中实现，解释详见具体配置 --> 
-    <b:bean id="myFilter" class="com.lcy.springSecurity.MyFilterSecurityInterceptor">  
+    <b:bean id="myFilter" class="com.test.cheng.security.MyFilterSecurityInterceptor">  
         <b:property name="authenticationManager" ref="authenticationManager" />  
         <b:property name="accessDecisionManager" ref="myAccessDecisionManagerBean" />  
         <b:property name="securityMetadataSource" ref="securityMetadataSource" />  

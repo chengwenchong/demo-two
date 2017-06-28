@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.test.cheng.dao.ITestDao" >
-	<select id="getUsers" resultType="com.test.cheng.domain.Test">
-		select id,name from user_t
+<mapper namespace="com.test.cheng.dao.IUserDao" >
+	<select id="getUsers" resultType="com.test.cheng.domain.MyUser">
+		select id,name,password from user_t
+	</select>
+	
+	<select id="findById" resultType="com.test.cheng.domain.MyUser">
+		select id,name,password from user_t where name=#{name}
 	</select>
 </mapper>

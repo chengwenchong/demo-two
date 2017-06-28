@@ -1,9 +1,9 @@
 package com.test.cheng.security;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,23 +11,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.test.cheng.dao.IAdminDao;
-import com.test.cheng.dao.IStudentDao;
-import com.test.cheng.dao.ITeacherDao;
-import com.test.cheng.domain.Admin;
-import com.test.cheng.domain.Student;
-import com.test.cheng.domain.Teacher;
+import com.test.cheng.domain.MyUser;
+import com.test.cheng.service.UserService;
 
 public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	private static final String USERNAME = "username";  
     private static final String PASSWORD = "password";  
 
-    @Resource 
-    private IStudentDao studentdao;  
-    @Resource 
-    private ITeacherDao teacherdao;  
-    @Resource 
-    private IAdminDao admindao;  
+    @Autowired 
+    private UserService userService; 
 
     @Override 
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {  
@@ -45,7 +37,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 
             if(!"".equals(roletype) || roletype != null){  
                 if("student".equals(roletype)){  
-                    Student stu = studentdao.findById(username);  
+                    MyUser stu = userService.findById(username);  
 
                     //通过session把用户对象设置到session中  
                     request.getSession().setAttribute("session_user", stu);  
@@ -64,7 +56,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
                     }  
 
                 }else if("teacher".equals(roletype)){  
-                    Teacher tea = teacherdao.findById(username);  
+                    MyUser tea = userService.findById(username);  
 
                     //通过session把用户对象设置到session中  
                     request.getSession().setAttribute("session_user", tea);  
@@ -83,7 +75,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
                     }  
 
                 }else if("admin".equals(roletype)){  
-                    Admin adm = admindao.findById(username);  
+                	MyUser adm = userService.findById(username);  
 
                     //通过session把用户对象设置到session中  
                     request.getSession().setAttribute("session_user", adm);  
